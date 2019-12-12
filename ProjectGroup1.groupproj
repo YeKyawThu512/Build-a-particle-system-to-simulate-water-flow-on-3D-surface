@@ -1,0 +1,61 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9E6BED54-94F1-405A-8AB6-632AEF237027}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="D:\GLScene\Samples\Delphi\Demos\behaviours\DCEDemo\dceDemo.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Rendering.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="dceDemo">
+        <MSBuild Projects="D:\GLScene\Samples\Delphi\Demos\behaviours\DCEDemo\dceDemo.dproj"/>
+    </Target>
+    <Target Name="dceDemo:Clean">
+        <MSBuild Projects="D:\GLScene\Samples\Delphi\Demos\behaviours\DCEDemo\dceDemo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="dceDemo:Make">
+        <MSBuild Projects="D:\GLScene\Samples\Delphi\Demos\behaviours\DCEDemo\dceDemo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Rendering">
+        <MSBuild Projects="Rendering.dproj"/>
+    </Target>
+    <Target Name="Rendering:Clean">
+        <MSBuild Projects="Rendering.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Rendering:Make">
+        <MSBuild Projects="Rendering.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="dceDemo;Rendering"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="dceDemo:Clean;Rendering:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="dceDemo:Make;Rendering:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
+s="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Rendering;dceDemo;Project1"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Rendering:Clean;dceDemo:Clean;Project1:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Rendering:Make;dceDemo:Make;Project1:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
